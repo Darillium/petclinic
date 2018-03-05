@@ -1,5 +1,5 @@
 #  PetClinic Demo  Application
-
+![Alt text](Petclinic.png?raw=true "Darillium Pet Clinic")
 ## Running petclinic locally
 ```
 	git clone https://github.com/Darillium/petclinic.git
