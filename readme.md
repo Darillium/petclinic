@@ -3,7 +3,7 @@
 ## Running petclinic locally
 ```
 	git clone https://github.com/Darillium/petclinic.git
-	cd spring-petclinic
+	cd petclinic
 	./mvnw spring-boot:run
 ```
 
