@@ -12,4 +12,4 @@ target/*
 !.vscode/launch.json
 !.vscode/extensions.json
 _site/
-mysql_migration/sql_scripts
+petclinic_init_db/sql_scripts
