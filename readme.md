@@ -48,7 +48,13 @@ If everything went OK, you should be getting a lot of these (or similar) message
 At this point, the tables in petclinic database are created and populated and you can run petclinic application with external MySql DB (db is running in a docker container).
 
 *Note:
-	Don't forget to specify spring profile `mysql`.*
+	to run the Petclinic db initialisation in a docker container, please consult this [readme](./petclinic_init_db/readme.md)*
+
+## Running the application locally, using external database
+To run the application with maven use the following command:
+```
+SPRING_DATASOURCE_USERNAME=pc_user SPRING_DATASOURCE_PASSWORD=pc_password SPRING_DATASOURCE_URL=jdbc:mysql://127.0.0.1:3306/petclinic SPRING_PROFILES_ACTIVE=mysql ./mvnw spring-boot:run
+```
 
 ## Packaging the application as docker image.
 You will find a very simple Docker file at the root of this repo, which we are using to "dockerize" our app.
@@ -97,6 +103,7 @@ You will get a lot of log messages on your screen, you should see something like
 ```
 The important one is **Tomcat started on port(s): 80 (http) with context path ''**
 
+## Checking the application
 To check that the application is responding you can use curl command:
 ```
 curl http://localhost:8080/vets.htm
