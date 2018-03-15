@@ -4,7 +4,7 @@
 ```
 	git clone https://github.com/Darillium/petclinic.git
 	cd petclinic
-	./mvnw spring-boot:run
+        SPRING_PROFILES_ACTIVE=hsqldb ./mvnw spring-boot:run
 ```
 
 You can then access petclinic here: http://localhost:8080/
@@ -18,7 +18,7 @@ Note that whenever the database type is changed, the data-access.properties file
 You could start a MySql database with docker:
 
 ```
-docker run -e MYSQL_ROOT_PASSWORD=petclinic -e MYSQL_DATABASE=petclinic -e MYSQL_USER=pc_user -e MYSQL_PASSWORD=pc_password -p 3306:3306 mysql:5.7.8
+docker run --name petDB -e MYSQL_ROOT_PASSWORD=petclinic -e MYSQL_DATABASE=petclinic -e MYSQL_USER=pc_user -e MYSQL_PASSWORD=pc_password -p 3306:3306 mysql:5.7.8
 ```
 
 ## DB initialisation.
@@ -33,7 +33,7 @@ $cd src/main/resources/db/mysql/
 Login to mysql as root user:
 
 ```
-$mysql -h127.0.0.1 -uroot -ppetclinic
+$mysql -h127.0.0.1 -uroot -ppetclinic --database=petclinic
 ```
 
 Once in mysql client prompt:
@@ -50,7 +50,16 @@ At this point, the tables in petclinic database are created and populated and yo
 *Note:
 	to run the Petclinic db initialisation in a docker container, please consult this [readme](./petclinic_init_db/readme.md)*
 
-## Running the application locally, using external database
+## Stopping and starting petDB
+...
+To stop the database run: docker stop petDB
+
+List dontainers: docker ps -a
+
+To start the database: docker start petDB
+...
+
+## Running the application using run time configuration
 To run the application with maven use the following command:
 ```
 SPRING_DATASOURCE_USERNAME=pc_user SPRING_DATASOURCE_PASSWORD=pc_password SPRING_DATASOURCE_URL=jdbc:mysql://127.0.0.1:3306/petclinic SPRING_PROFILES_ACTIVE=mysql ./mvnw spring-boot:run
